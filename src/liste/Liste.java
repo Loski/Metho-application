@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
 
+
 public class Liste implements OperationListe, Serializable {
 	private String idListe;
 	private ArrayList<Etudiant> etudiant;
@@ -114,6 +115,19 @@ public class Liste implements OperationListe, Serializable {
 	}
 	public void trier(){
 		Collections.sort(etudiant);
+	}
+	
+	public boolean equals(Liste l){
+		if(this.idListe.equals(l.idListe) && this.etudiant.size()==l.etudiant.size())
+		{
+			for(int i=0; i<etudiant.size();i++)
+				if(!etudiant.get(i).equals(l.etudiant.get(i)))
+					return false;
+		}
+		else
+			return false;
+		
+		return true;
 	}
 	
 }
